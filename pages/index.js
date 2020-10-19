@@ -1,65 +1,100 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import Layout from '../components/Layout'
+import { getPosts } from '../lib/posts'
 
-export default function Home() {
+export async function getStaticProps() {
+  const posts = await getPosts()
+
+  return {
+    props: {
+      posts
+    }
+  }
+}
+
+export default function Home({ posts }) {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout>
+      <Head></Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <div className='text'>
+        <p>Hi, my name is Hernán. I make web products.</p>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+        <p>
+          I’m currently working at{' '}
+          <a href='http://hopin.to/' className='hopin'>
+            Hopin
+          </a>
+          . And building <a href='https://bloggi.co'>Bloggi</a> on the side.
         </p>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+        <p>
+          <a href='mailto:hi@hernansartorio.com'>Say hi</a>, or find me on{' '}
+          <a href='https://twitter.com/hernansartorio' className='twitter'>
+            Twitter
           </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          , <a href='https://github.com/hernansartorio'>GitHub</a>,{' '}
+          <a href='https://dribbble.com/hernansartorio' className='dribbble' data-color='ea4c89'>
+            Dribbble
           </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+          , or{' '}
+          <a href='https://linkedin.com/in/hernansartorio' className='linkedin'>
+            LinkedIn
           </a>
+          .
+        </p>
+      </div>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+      <h2 className='section-heading'>Writing</h2>
+
+      <ul className='list'>
+        {posts &&
+          posts.map(({ slug, date, title }) => (
+            <li className='list_item' key={slug}>
+              <time className='list_meta'>{date}</time>
+              <Link href={slug}>
+              <a className='list_link'>
+                {title}
+              </a>
+              </Link>
+            </li>
+          ))}
+        {/* {% for post in site.posts %}
+      {% unless post.draft %}
+        <li className="list_item">
+          <time className="list_meta">
+            {{ post.date | date: "%B %d, %Y"  }}
+          </time>
+
+          <a className="list_link" href="{{ post.url }}">
+            {{ post.title }}
           </a>
-        </div>
-      </main>
+        </li>
+      {% endunless %}
+    {% endfor %} */}
+      </ul>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      <h2 className='section-heading'>Subscribe</h2>
+
+      <p className='text-gray text-small'>Get an email whenever I publish something new.</p>
+
+      <div>
+        <form
+          action='https://gmail.us3.list-manage.com/subscribe/post?u=c728c22360f0ab25e10466629&amp;id=0f4730918d'
+          method='post'
+          target='_blank'
+          className='subscribe-form'
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+          <input type='email' name='EMAIL' className='input' placeholder='Your email' required />
+
+          <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden='true'>
+            <input type='text' name='b_c728c22360f0ab25e10466629_0f4730918d' tabIndex='-1' defaultValue='' />
+          </div>
+
+          <input type='submit' value='Subscribe' name='subscribe' className='button' />
+        </form>
+      </div>
+    </Layout>
   )
 }
