@@ -12,6 +12,7 @@ function Layout({ children }) {
         <meta name='twitter:card' content='summary' />
         <meta name='twitter:site' content='@hernansartorio' />
         <meta name='twitter:creator' content='@hernansartorio' />
+        <meta name="twitter:card" content="summary_large_image" />
 
         <title key='title'>Hernán Sartorio</title>
 

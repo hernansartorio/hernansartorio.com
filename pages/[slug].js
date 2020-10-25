@@ -33,6 +33,7 @@ export default function Home({ post }) {
         <meta property='og:title' content={`${post.title} | Hernán Sartorio`} key='metaTitle' />
         <meta property='og:url' content={post.url} key='metaUrl' />
         <meta property='og:description' content={post.excerpt} />
+        {post.image_url && <meta property='og:image' content={post.image_url} />}
 
         {post.slug === 'the-making-of-bloggi' && (
           <link rel='canonical' href='https://blog.bloggi.co/the-making-of-bloggi' />
