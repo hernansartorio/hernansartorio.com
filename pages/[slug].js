@@ -27,7 +27,16 @@ export default function Home({ post }) {
   return (
     <Layout>
       <Head>
-        <title>{post.title} | Hernán Sartorio</title>
+        <title key='title'>{post.title} | Hernán Sartorio</title>
+
+        <meta property='og:type' content='article' key='metaType' />
+        <meta property='og:title' content={`${post.title} | Hernán Sartorio`} key='metaTitle' />
+        <meta property='og:url' content={post.url} key='metaUrl' />
+        <meta property='og:description' content={post.excerpt} />
+
+        {post.slug === 'the-making-of-bloggi' && (
+          <link rel='canonical' href='https://blog.bloggi.co/the-making-of-bloggi' />
+        )}
       </Head>
 
       <article>
