@@ -16,7 +16,7 @@ function Layout({ children }) {
 
         <title key='title'>Hernán Sartorio</title>
 
-        <link rel='stylesheet' type='text/css' href='https://cloud.typography.com/6289852/7393952/css/fonts.css' media='print' onload='this.media="all"' />
+        <link rel='stylesheet' type='text/css' href='https://cloud.typography.com/6289852/7393952/css/fonts.css' />
 
         <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="YIFVTXOS" included-domains="hernansartorio.com" defer></script>
       </Head>
