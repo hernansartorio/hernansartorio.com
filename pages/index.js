@@ -26,7 +26,7 @@ export default function Home({ posts }) {
           <a href='http://hopin.to/' className='hopin'>
             Hopin
           </a>
-          . And building <a href='https://bloggi.co'>Bloggi</a> on the side.
+          . And building <a href='https://bloggi.co'>Bloggi</a> and <a href='https://pagy.co'>Pagy</a> on the side.
         </p>
 
         <p>
