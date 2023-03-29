@@ -22,11 +22,12 @@ export default function Home({ posts }) {
         <p>Hi, my name is Hernán. I make web products.</p>
 
         <p>
-          I’m currently working at{' '}
+          I’m currently building <a href='https://pagy.co'>Pagy</a>. Previously I built <a href='https://bloggi.co'>Bloggi</a>, and worked
+          at{' '}
           <a href='http://hopin.to/' className='hopin'>
             Hopin
           </a>
-          . And building <a href='https://bloggi.co'>Bloggi</a> and <a href='https://pagy.co'>Pagy</a> on the side.
+          .
         </p>
 
         <p>
@@ -54,9 +55,7 @@ export default function Home({ posts }) {
             <li className='list_item' key={slug}>
               <time className='list_meta'>{date}</time>
               <Link href={slug}>
-              <a className='list_link'>
-                {title}
-              </a>
+                <a className='list_link'>{title}</a>
               </Link>
             </li>
           ))}
